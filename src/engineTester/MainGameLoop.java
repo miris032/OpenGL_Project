@@ -1,11 +1,10 @@
 package engineTester;
 
 import org.lwjgl.opengl.Display;
-import org.lwjgl.opengl.GL11;
 
 import renderEngine.DisplayManager;
 import renderEngine.Loader;
-import renderEngine.RawModel;
+import models.RawModel;
 import renderEngine.Renderer;
 import shaders.StaticShader;
 
