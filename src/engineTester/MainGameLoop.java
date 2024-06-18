@@ -31,10 +31,10 @@ public class MainGameLoop {
 				new ModelTexture(loader.loadTexture("playerTexture")));
 
 		TexturedModel dragon = new TexturedModel(OBJLoader.loadObjModel("dragon", loader),
-				new ModelTexture(loader.loadTexture("playerTexture")));
+				new ModelTexture(loader.loadTexture("texture")));
 
-		/*TexturedModel castle = new TexturedModel(OBJLoader.loadObjModel("castle", loader),
-				new ModelTexture(loader.loadTexture("playerTexture")));*/
+		TexturedModel castle = new TexturedModel(OBJLoader.loadObjModel("castle", loader),
+				new ModelTexture(loader.loadTexture("image2")));
 
 		TexturedModel tree = new TexturedModel(OBJLoader.loadObjModel("tree", loader),
 				new ModelTexture(loader.loadTexture("treeTexture")));
@@ -59,8 +59,9 @@ public class MainGameLoop {
 
 
 
-		Entity entity = new Entity(person, new Vector3f(10,0,10),0,0,0,1);
+		Entity entity = new Entity(person, new Vector3f(0,0,10),0,0,0,1);
 		Entity entity2 = new Entity(dragon, new Vector3f(30,0,10),0,0,0,2);
+		Entity entity3 = new Entity(castle, new Vector3f(-50,0,10),0,0,0,30);
 		Light light = new Light(new Vector3f(3000, 2000, 2000), new Vector3f(1, 1, 1));
 
 		Terrain terrain = new Terrain(-1,-1,loader,new ModelTexture(loader.loadTexture("grass")));
@@ -88,6 +89,9 @@ public class MainGameLoop {
 
 			// dragon
 			renderer.processEntity(entity2);
+
+			// castle
+			renderer.processEntity(entity3);
 
 			// tree & grass
 			for (Entity ety : entities) {
