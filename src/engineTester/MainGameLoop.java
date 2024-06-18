@@ -33,6 +33,9 @@ public class MainGameLoop {
 		TexturedModel dragon = new TexturedModel(OBJLoader.loadObjModel("dragon", loader),
 				new ModelTexture(loader.loadTexture("playerTexture")));
 
+		/*TexturedModel castle = new TexturedModel(OBJLoader.loadObjModel("castle", loader),
+				new ModelTexture(loader.loadTexture("playerTexture")));*/
+
 		TexturedModel tree = new TexturedModel(OBJLoader.loadObjModel("tree", loader),
 				new ModelTexture(loader.loadTexture("treeTexture")));
 
