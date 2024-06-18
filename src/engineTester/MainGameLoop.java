@@ -47,8 +47,8 @@ public class MainGameLoop {
 
 		List<Entity> entities = new ArrayList<Entity>();
 		Random random = new Random();
-		float min = 3.0f;
-		float max = 10.0f;
+		float min = 10.0f;
+		float max = 30.0f;
 		for (int i = 0; i < 500; i++) {
 			float randomFloat = min + random.nextFloat() * (max - min);
 			entities.add(new Entity(tree, new Vector3f(random.nextFloat()*800-400, 0,
