@@ -34,7 +34,7 @@ public class MainGameLoop {
 				new ModelTexture(loader.loadTexture("texture")));
 
 		TexturedModel castle = new TexturedModel(OBJLoader.loadObjModel("castle", loader),
-				new ModelTexture(loader.loadTexture("image2")));
+				new ModelTexture(loader.loadTexture("castleTexture")));
 
 		TexturedModel tree = new TexturedModel(OBJLoader.loadObjModel("tree", loader),
 				new ModelTexture(loader.loadTexture("treeTexture")));
