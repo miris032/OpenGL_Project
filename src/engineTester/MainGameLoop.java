@@ -3,6 +3,7 @@ package engineTester;
 import entities.Camera;
 import entities.Entity;
 import entities.Light;
+import entities.Player;
 import models.TexturedModel;
 import org.lwjgl.opengl.Display;
 
@@ -36,7 +37,7 @@ public class MainGameLoop {
 		TexturedModel castle = new TexturedModel(OBJLoader.loadObjModel("castle", loader),
 				new ModelTexture(loader.loadTexture("castleTexture")));
 
-		TexturedModel tree = new TexturedModel(OBJLoader.loadObjModel("tree", loader),
+		TexturedModel tree = new TexturedModel(OBJLoader.loadObjModel("tree2", loader),
 				new ModelTexture(loader.loadTexture("treeTexture")));
 
 		TexturedModel grass = new TexturedModel(OBJLoader.loadObjModel("grassModel", loader),
@@ -59,9 +60,9 @@ public class MainGameLoop {
 
 
 
-		Entity entity = new Entity(person, new Vector3f(0,0,10),0,0,0,1);
-		Entity entity2 = new Entity(dragon, new Vector3f(30,0,10),0,0,0,2);
-		Entity entity3 = new Entity(castle, new Vector3f(-50,0,10),0,0,0,30);
+		//Entity entity = new Entity(person, new Vector3f(0,0,10),0,0,0,1);
+		Entity entity2 = new Entity(dragon, new Vector3f(30,0,10),0,0,0,4);
+		Entity entity3 = new Entity(castle, new Vector3f(-50,0,10),0,0,0,20);
 		Light light = new Light(new Vector3f(3000, 2000, 2000), new Vector3f(1, 1, 1));
 
 		Terrain terrain = new Terrain(-1,-1,loader,new ModelTexture(loader.loadTexture("grass")));
@@ -75,17 +76,22 @@ public class MainGameLoop {
 		Terrain terrain8 = new Terrain(1,1,loader,new ModelTexture(loader.loadTexture("grass")));
 
 
-		Camera camera = new Camera();
 		MasterRenderer renderer = new MasterRenderer();
+
+		Player player = new Player(person, new Vector3f(0, 0, 100), 0, 180, 0, 1);
+		Camera camera = new Camera(player);
 
 		while(!Display.isCloseRequested()){
 
 			// ==================== game logic ====================
-			entity.increaseRotation(0, -1, 0);
+			//entity.increaseRotation(0, -1, 0);
 			camera.move();
+			player.move();
+			entity2.move();
+			renderer.processEntity(player);
 
 			// person
-			renderer.processEntity(entity);
+			//renderer.processEntity(entity);
 
 			// dragon
 			renderer.processEntity(entity2);

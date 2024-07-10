@@ -2,6 +2,7 @@ package entities;
 
 import models.TexturedModel;
 import org.lwjgl.util.vector.Vector3f;
+import renderEngine.DisplayManager;
 
 public class Entity {
 
@@ -9,6 +10,13 @@ public class Entity {
     private Vector3f position;
     private float rotX, rotY, rotZ;
     private float scale;
+
+    private static final float RUN_SPEED = 0.02f;
+    private static final float TURN_SPEED = 100;
+    private float currentSpeed = 0;
+    private float currentTurnSpeed = 0;
+    private float upwardsSpeed = 0;
+    private static final float GRAVITY = -100;
 
     public Entity(TexturedModel model, Vector3f position, float rotX, float rotY, float rotZ, float scale) {
         this.model = model;
@@ -29,6 +37,20 @@ public class Entity {
         this.rotX+=dx;
         this.rotY+=dy;
         this.rotZ+=dz;
+    }
+
+    public void move() {
+        currentSpeed += RUN_SPEED;
+
+
+        increaseRotation(0, currentTurnSpeed * DisplayManager.getFrameTimeSeconds(), 0);
+        float distance = currentSpeed * DisplayManager.getFrameTimeSeconds();
+        float dx = (float) (distance * Math.sin(Math.toRadians(getRotY())));
+        float dz = (float) (distance * Math.cos(Math.toRadians(getRotY())));
+        increasePosition(dx, 0, dz);
+        //upwardsSpeed += GRAVITY * DisplayManager.getFrameTimeSeconds();
+        //increasePosition(0, upwardsSpeed * DisplayManager.getFrameTimeSeconds(), 0);
+
     }
 
     public TexturedModel getModel() {
