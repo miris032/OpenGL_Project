@@ -1,8 +1,11 @@
 package entities;
 
 import models.TexturedModel;
+import org.lwjgl.input.Mouse;
 import org.lwjgl.util.vector.Vector3f;
 import renderEngine.DisplayManager;
+
+import java.util.Random;
 
 public class Entity {
 
@@ -39,18 +42,39 @@ public class Entity {
         this.rotZ+=dz;
     }
 
-    public void move() {
-        currentSpeed += RUN_SPEED;
+    public  int generateRandomNumber() {
+        Random random = new Random();
+        float probability = random.nextFloat(); // Generate a random float between 0.0 and 1.0
 
+        if (probability < 0.98) {
+            return 0; // 98% chance
+        } else {
+            return random.nextInt(10001) - 5000; // 20% chance, generates a number between -50 and 50
+        }
+    }
 
-        increaseRotation(0, currentTurnSpeed * DisplayManager.getFrameTimeSeconds(), 0);
-        float distance = currentSpeed * DisplayManager.getFrameTimeSeconds();
-        float dx = (float) (distance * Math.sin(Math.toRadians(getRotY())));
-        float dz = (float) (distance * Math.cos(Math.toRadians(getRotY())));
-        increasePosition(dx, 0, dz);
-        //upwardsSpeed += GRAVITY * DisplayManager.getFrameTimeSeconds();
-        //increasePosition(0, upwardsSpeed * DisplayManager.getFrameTimeSeconds(), 0);
+    public void move2() {
 
+        if (Mouse.isButtonDown(2)) {
+
+            Random random = new Random();
+            float min = 0.0f;
+            float max = 50.0f;
+            float randomFloat = min + random.nextFloat() * (max - min);
+            currentSpeed = randomFloat;
+
+            int randomInt = generateRandomNumber();
+            currentTurnSpeed = randomInt;
+
+            increaseRotation(0, currentTurnSpeed * DisplayManager.getFrameTimeSeconds(), 0);
+            float distance = currentSpeed * DisplayManager.getFrameTimeSeconds();
+            float dx = (float) (distance * Math.sin(Math.toRadians(getRotY())));
+            float dz = (float) (distance * Math.cos(Math.toRadians(getRotY())));
+            increasePosition(dz, 0, dx);
+
+            //upwardsSpeed += GRAVITY * DisplayManager.getFrameTimeSeconds();
+            //increasePosition(0, upwardsSpeed * DisplayManager.getFrameTimeSeconds(), 0);
+        }
     }
 
     public TexturedModel getModel() {

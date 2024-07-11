@@ -14,6 +14,7 @@ import shaders.StaticShader;
 import terrains.Terrain;
 import textures.ModelTexture;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -32,7 +33,7 @@ public class MainGameLoop {
 				new ModelTexture(loader.loadTexture("playerTexture")));
 
 		TexturedModel dragon = new TexturedModel(OBJLoader.loadObjModel("dragon", loader),
-				new ModelTexture(loader.loadTexture("texture")));
+				new ModelTexture(loader.loadTexture("texture3")));
 
 		TexturedModel castle = new TexturedModel(OBJLoader.loadObjModel("castle", loader),
 				new ModelTexture(loader.loadTexture("castleTexture")));
@@ -61,7 +62,7 @@ public class MainGameLoop {
 
 
 		//Entity entity = new Entity(person, new Vector3f(0,0,10),0,0,0,1);
-		Entity entity2 = new Entity(dragon, new Vector3f(30,0,10),0,0,0,4);
+		Entity entity2 = new Entity(dragon, new Vector3f(30,0,10),0,90,0,4);
 		Entity entity3 = new Entity(castle, new Vector3f(-50,0,10),0,0,0,20);
 		Light light = new Light(new Vector3f(3000, 2000, 2000), new Vector3f(1, 1, 1));
 
@@ -85,9 +86,14 @@ public class MainGameLoop {
 
 			// ==================== game logic ====================
 			//entity.increaseRotation(0, -1, 0);
+			if (Math.abs(player.getPosition().getX() - entity2.getPosition().getX()) < 10
+			&& Math.abs(player.getPosition().getZ() - entity2.getPosition().getZ()) < 25) {
+				JOptionPane.showMessageDialog(null, "Game Over!");
+				break;
+			}
 			camera.move();
 			player.move();
-			entity2.move();
+			entity2.move2();
 			renderer.processEntity(player);
 
 			// person
