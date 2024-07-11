@@ -29,8 +29,8 @@ public class MainGameLoop {
 		//EntityRenderer renderer = new EntityRenderer(shader);
 
 
-		TexturedModel person = new TexturedModel(OBJLoader.loadObjModel("person", loader),
-				new ModelTexture(loader.loadTexture("playerTexture")));
+		TexturedModel person = new TexturedModel(OBJLoader.loadObjModel("man", loader),
+				new ModelTexture(loader.loadTexture("manTexture")));
 
 		TexturedModel dragon = new TexturedModel(OBJLoader.loadObjModel("dragon", loader),
 				new ModelTexture(loader.loadTexture("texture3")));
@@ -66,15 +66,15 @@ public class MainGameLoop {
 		Entity entity3 = new Entity(castle, new Vector3f(-50,0,10),0,0,0,20);
 		Light light = new Light(new Vector3f(3000, 2000, 2000), new Vector3f(1, 1, 1));
 
-		Terrain terrain = new Terrain(-1,-1,loader,new ModelTexture(loader.loadTexture("grass")));
-		Terrain terrain1 = new Terrain(-1,0,loader,new ModelTexture(loader.loadTexture("grass")));
-		Terrain terrain2 = new Terrain(-1,1,loader,new ModelTexture(loader.loadTexture("grass")));
-		Terrain terrain3 = new Terrain(0,-1,loader,new ModelTexture(loader.loadTexture("grass")));
-		Terrain terrain4 = new Terrain(0,0,loader,new ModelTexture(loader.loadTexture("grass")));
-		Terrain terrain5 = new Terrain(0,1,loader,new ModelTexture(loader.loadTexture("grass")));
-		Terrain terrain6 = new Terrain(1,-1,loader,new ModelTexture(loader.loadTexture("grass")));
-		Terrain terrain7 = new Terrain(1,0,loader,new ModelTexture(loader.loadTexture("grass")));
-		Terrain terrain8 = new Terrain(1,1,loader,new ModelTexture(loader.loadTexture("grass")));
+		Terrain terrain = new Terrain(-1,-1,loader,new ModelTexture(loader.loadTexture("grass2")));
+		Terrain terrain1 = new Terrain(-1,0,loader,new ModelTexture(loader.loadTexture("grass2")));
+		Terrain terrain2 = new Terrain(-1,1,loader,new ModelTexture(loader.loadTexture("grass2")));
+		Terrain terrain3 = new Terrain(0,-1,loader,new ModelTexture(loader.loadTexture("grass2")));
+		Terrain terrain4 = new Terrain(0,0,loader,new ModelTexture(loader.loadTexture("grass2")));
+		Terrain terrain5 = new Terrain(0,1,loader,new ModelTexture(loader.loadTexture("grass2")));
+		Terrain terrain6 = new Terrain(1,-1,loader,new ModelTexture(loader.loadTexture("grass2")));
+		Terrain terrain7 = new Terrain(1,0,loader,new ModelTexture(loader.loadTexture("grass2")));
+		Terrain terrain8 = new Terrain(1,1,loader,new ModelTexture(loader.loadTexture("grass2")));
 
 
 		MasterRenderer renderer = new MasterRenderer();
